@@ -1,0 +1,29 @@
+{
+  "name": "serverapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Stolkens/serverApi.git",
+  "author": "Stolkens <92957952+Stolkens@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "5.7.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.0",
+    "react-router-dom": "^6.13.0",
+    "reactstrap": "^9.2.0",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
+    "socket.io": "2.2.0",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "npx nodemon server.js"
+  }
+}

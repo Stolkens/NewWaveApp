@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "64e47157749cda6c4c8a1c55"
+  },
+  "author": "John Doe",
+  "text": "This company is worth every coin!"
+},
+{
+  "_id": {
+    "$oid": "64e47157749cda6c4c8a1c56"
+  },
+  "author": "Amanda Doe",
+  "text": "They really know how to make you happy."
+},
+{
+  "_id": {
+    "$oid": "64e4718546d98930b4321f61"
+  },
+  "author": "Hamimi Jazz",
+  "text": "woow oooo",
+  "__v": 0
+}]
