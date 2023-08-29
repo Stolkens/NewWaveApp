@@ -12,7 +12,7 @@ const NODE_ENV = process.env.NODE_ENV;
 let dbUri = '';
 
 if(NODE_ENV === 'production') dbUri = 'mongodb+srv://maciejstolecki:Kodilla1@newwavedb.4qrab1u.mongodb.net/NewWaveDB?retryWrites=true&w=majority';
-else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/NewWaveDB';
+else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/TestNewWaveDB';
 else dbUri = 'mongodb://localhost:27017/NewWaveDB';
 
 mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -62,3 +62,5 @@ app.use((req, res) => {
 io.on("connection", (socket) => {
   console.log("New client! Its id – " + socket.id);
 });
+
+module.exports = server;
