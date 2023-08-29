@@ -17,7 +17,7 @@ const SeatChooser = ({ chosenDay, chosenSeat, updateSeat }) => {
       process.env.NODE_ENV === "production" ? "/" : "http://localhost:8000/"
     );
     dispatch(loadSeatsRequest());
-    newSocket.on('seatsUpdated', (seatsData) => dispatch(loadSeats(seatsData)))
+    newSocket.on('seatsUpdated', (seatsData) => dispatch(loadSeats(seatsData)));
     setSocket(newSocket);
   }, [dispatch]);
   

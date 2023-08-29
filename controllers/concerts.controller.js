@@ -68,3 +68,66 @@ exports.deleteConcert = async (req, res) => {
   }
 
 };
+
+exports.getConcertsByPerformer = async (req, res) => {
+  try {
+    const performerParam = req.params.performer;
+    const performer = performerParam.replace(/([a-z])([A-Z])/g, '$1 $2'); // Dodaj spację pomiędzy małą literą a dużą literą
+    const concerts = await Concerts.find({ performer }); 
+    if (concerts.length === 0) {
+      res.status(404).json({ message: 'Not found' });
+    } else {
+      res.json(concerts);
+    }
+  } catch(err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+exports.getConcertsByGenre = async (req, res) => {
+  try {
+    const genre = req.params.genre;
+    const concerts = await Concerts.find({ genre }); 
+    if (concerts.length === 0) {
+      res.status(404).json({ message: 'Not found' });
+    } else {
+      res.json(concerts);
+    }
+  } catch(err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+exports.getConcertsByDay = async (req, res) => {
+  try {
+    const day = req.params.day;
+    const concerts = await Concerts.find({ day }); 
+    if (concerts.length === 0) {
+      res.status(404).json({ message: 'Not found' });
+    } else {
+      res.json(concerts);
+    }
+  } catch(err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+exports.getConcertsByPrice = async (req, res) => {
+  try {
+    const priceMin = parseFloat(req.params.price_min);
+    const priceMax = parseFloat(req.params.price_max);
+
+    if (isNaN(priceMin) || isNaN(priceMax)) {
+      res.status(400).json({ message: 'Invalid price range' });
+      return;
+    }
+    const concerts = await Concerts.find({ price: { $gte: priceMin, $lte: priceMax } }); 
+    if (concerts.length === 0) {
+      res.status(404).json({ message: 'Not found' });
+    } else {
+      res.json(concerts);
+    }
+  } catch(err) {
+    res.status(500).json({ message: err });
+  }
+};

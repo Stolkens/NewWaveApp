@@ -6,8 +6,16 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb+srv://maciejstolecki:Kodilla1@newwavedb.4qrab1u.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb+srv://maciejstolecki:Kodilla1@newwavedb.4qrab1u.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
+const NODE_ENV = process.env.NODE_ENV;
+let dbUri = '';
+
+if(NODE_ENV === 'production') dbUri = 'mongodb+srv://maciejstolecki:Kodilla1@newwavedb.4qrab1u.mongodb.net/NewWaveDB?retryWrites=true&w=majority';
+else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/NewWaveDB';
+else dbUri = 'mongodb://localhost:27017/NewWaveDB';
+
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
