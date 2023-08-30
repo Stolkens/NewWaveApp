@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 const Lineup = () => {
 
   const dispatch = useDispatch();
-  const concerts = useSelector(getConcerts)
+  const concerts = useSelector(getConcerts);
   const request = useSelector(getRequest);
 
   useEffect(() => {

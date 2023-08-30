@@ -1,9 +1,21 @@
 const Concerts = require('../models/concerts.model');
+const Workshops = require('../models/worshops.model');
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Concerts.find());
-  }
+    const concerts = await Concerts.find();
+    const workshops = await Workshops.find();
+
+    const updateConcerts = concerts.map((concert) => {
+      const concertObj = concert.toObject();
+      concertObj.workshops = workshops.filter(
+        (workshop) => workshop.concertId === concert.id
+      );
+      return concertObj;
+    });
+
+    res.json(updateConcerts);
+    }
   catch(err) {
     res.status(500).json({ message: err });
   }
