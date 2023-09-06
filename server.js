@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 
 mongoose.connect('mongodb+srv://maciejstolecki:Kodilla1@newwavedb.4qrab1u.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -47,6 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(morgan('dev'));
 app.use(cors());
+app.use(helmet());
 app.use('/api', testimonialRoutes);
 app.use('/api', concertRoutes);
 app.use('/api', seatsRoutes);
